@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@include('layouts.sidebaradmin')
+@include('layouts.sidebar')
 @section('content')
 <html>
 
@@ -139,7 +139,7 @@ float-right" data-toggle="modal" data-target="#exampleModal">
                             <td>{{ $anak->ket_tb }}</td>
                             <td>{{ $anak->ket_bb }}</td>
                             <td><a href="/anak/{{$anak->id}}/edit" class="btn btn-warning btn-sm">Edit</a></td>
-                            <td><a href="/anak/delete/{{$anak->id}}" class="btn btn-danger btn-sm" onclick="return confirm('Apakah anda yakin ingin menghapus?')">Delete</a></td>
+                            
                         </tr>
                     </tbody>
                     @endforeach

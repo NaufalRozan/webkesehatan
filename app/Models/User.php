@@ -11,18 +11,25 @@ use Spatie\Permission\Traits\HasRoles;
 
 class User extends Authenticatable
 {
-    
+
     use HasApiTokens, HasFactory, Notifiable;
     use HasRoles;
+
+    const ROLE_USER = 'user';
+    const ROLE_ADMIN = 'admin';
+    const ROLE_SUPERUSER = 'superuser';
     /**
      * The attributes that are mass assignable.
      *
      * @var array<int, string>
      */
+
+    protected $table = 'users';
     protected $fillable = [
         'name',
         'username',
         'email',
+        'role',
         'password',
     ];
 

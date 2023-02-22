@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Http\Controllers\Auth;
+namespace App\Http\Controllers;
 
+use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use App\Models\User;
@@ -9,29 +10,20 @@ use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 
-class RegisterController extends Controller
+class TambahController extends Controller
 {
-    /*
-    |--------------------------------------------------------------------------
-    | Register Controller
-    |--------------------------------------------------------------------------
-    |
-    | This controller handles the registration of new users as well as their
-    | validation and creation. By default this controller uses a trait to
-    | provide this functionality without requiring any additional code.
-    |
-    */
+    public function index()
+    {
+        return view('tambah.index');
+    }
 
-    use RegistersUsers;
-
-    /**
-     * Where to redirect users after registration.
+     /**
+     * Create a new controller instance.
      *
-     * @var string
+     * @return void
      */
-    protected $redirectTo = RouteServiceProvider::REGISTER;
+  
 
-   
     /**
      * Get a validator for an incoming registration request.
      *
@@ -43,9 +35,9 @@ class RegisterController extends Controller
         return Validator::make($data, [
             'name' => ['required', 'string', 'max:255'],
             'username' => ['required', 'string', 'max:255'],
-            'role' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
+            'role' => ['required', 'string', 'max:255'],
         ]);
     }
 
@@ -60,9 +52,9 @@ class RegisterController extends Controller
         return User::create([
             'name' => $data['name'],
             'username' => $data['username'],
-            'role' => $data['role'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
+            'role' => $data['role'],
         ]);
     }
 }

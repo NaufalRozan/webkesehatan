@@ -1,6 +1,16 @@
-@extends('layouts.login')
-
+@extends('layouts.app')
+@include('layouts.sidebar')
 @section('content')
+<html>
+
+<head>
+
+    <!-- Scripts -->
+    <script src="{{ asset('js/app.js') }}" defer></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="https://getbootstrap.com/docs/5.3/assets/css/docs.css" rel="stylesheet" />
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+</head>
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
@@ -52,6 +62,25 @@
                                 @enderror
                             </div>
                         </div>
+
+                        <div class="row mb-3">
+                    <label for="role" class="col-md-4 col-form-label text-md-end">{{ __('Role') }}</label>
+
+                    <div class="col-md-6">
+                        <select name="role" class="form-select">
+                            <option value="admin">Admin</option>
+                            <option value="superuser">Posyandu</option>
+                            <option value="user">Faskes</option>
+                        </select>
+
+
+                        @error('role')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                        @enderror
+                    </div>
+                </div>
 
                         <div class="row mb-3">
                             <label for="password" class="col-md-4 col-form-label text-md-end">{{ __('Password') }}</label>

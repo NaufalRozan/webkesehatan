@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AnakController;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -15,14 +16,14 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('auth.login');
 });
 
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-Route::get('/anak', [App\Http\Controllers\AnakController::class, 'index'])->name('anak');
+Route::get('/anak', [App\Http\Controllers\AnakController::class, 'admin'])->name('anak');
 
 Route::get('/anak/cari', [App\Http\Controllers\AnakController::class, 'cari']);
 
